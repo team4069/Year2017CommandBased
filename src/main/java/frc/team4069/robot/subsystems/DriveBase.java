@@ -4,6 +4,10 @@ package frc.team4069.robot.subsystems;
 // for instructing it to drive and turn in a variety of ways
 public class DriveBase extends Subsystem {
 
+    // Left and right drive motors
+    private Motor leftDriveMotor = new Motor(1);
+    private Motor rightDriveMotor = new Motor(2);
+
     // An instance of the state enum that is used to remember what the drive base is currently doing
     private DriveBaseState state = DriveBaseState.IDLE;
 
@@ -33,7 +37,6 @@ public class DriveBase extends Subsystem {
 
     // Stop driving
     public void stop() {
-
         // Set the current state
         state = DriveBaseState.IDLE;
 
@@ -41,8 +44,7 @@ public class DriveBase extends Subsystem {
     }
 
     // Start driving with a given inverse turning radius and speed from zero to one
-    public void drive(double inverseTurningRadius, double speed) {
-
+    public void drive(double inverseTurningRadiusMeters, double speed) {
         // Set the current state
         state = DriveBaseState.DRIVE;
 
