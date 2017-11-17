@@ -13,7 +13,7 @@ public class SimpleDriveCommand extends Command {
     // This command has just begun executing
     public void init() {
         // Set the drive base to drive with an inverse turning radius of zero and a speed of 50%
-        this.robot.driveBase.drive(0, 0.5);
+        this.robot.driveBase.driveContinuousSpeed(0, 0.5);
     }
 
     // Called several times per second
