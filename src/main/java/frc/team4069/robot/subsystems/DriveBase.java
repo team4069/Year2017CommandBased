@@ -51,8 +51,8 @@ public class DriveBase extends Subsystem {
     // Stop moving immediately
     public void stop() {
         // Set the motor speeds to zero
-        leftDriveMotor.setSpeed(0);
-        rightDriveMotor.setSpeed(0);
+        leftDriveMotor.stop();
+        rightDriveMotor.stop();
     }
 
     // Start driving with a given inverse turning radius and speed from zero to one
