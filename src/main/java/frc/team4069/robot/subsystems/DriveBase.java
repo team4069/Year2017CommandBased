@@ -1,9 +1,14 @@
 package frc.team4069.robot.subsystems;
 
+import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.team4069.robot.commands.DriveBaseIdleCommand;
 
 // A class that manages all hardware components of the drive base and provides utility functions
 // for instructing it to drive and turn in a variety of ways
 public class DriveBase extends Subsystem {
+
+    // A singleton instance of the drive base
+    private static DriveBase instance;
 
     // The horizontal distance from the center of the robot to the outer wheels
     private final double halfRobotWidthMeters = 0.5;
@@ -12,47 +17,46 @@ public class DriveBase extends Subsystem {
     private Motor leftDriveMotor = new Motor(1);
     private Motor rightDriveMotor = new Motor(2);
 
-    // An instance of the state enum that is used to remember what the drive base is currently doing
-    private DriveBaseState state = DriveBaseState.IDLE;
-
     // A variable that records the distance traveled since the last state change in meters
     private double distanceTraveledMeters;
+
+    // A public getter for the instance
+    public static DriveBase getInstance() {
+        // If the instance is null, create a new one
+        if (instance == null) {
+            instance = new DriveBase();
+        }
+
+        return instance;
+    }
 
     // A public getter for the distance traveled in meters
     public double getDistanceTraveledMeters() {
         return distanceTraveledMeters;
     }
 
-    // Update the hardware depending on what state the drive base is currently in
+    // A function called periodically and used to send updates to the motors
     public void update() {
-
-        // Switch on the current state
-        switch (state) {
-            // The drive base is currently doing nothing
-            case IDLE:
-                // Do nothing
-                break;
-
-            // The robot is driving at a continuous speed
-            case DRIVE_CONTINUOUS_SPEED:
-                // Do nothing for now
-                break;
-        }
+        // Update both motors
+        leftDriveMotor.update();
+        rightDriveMotor.update();
     }
 
-    // Stop driving
-    public void stop() {
-        // Set the current state
-        state = DriveBaseState.IDLE;
+    // Called to get the first command that the drive base should execute
+    protected void initDefaultCommand() {
+        // Set the current command to idle
+        setDefaultCommand(new DriveBaseIdleCommand());
+    }
 
-        // Do nothing else for now
+    // Stop moving immediately
+    public void stop() {
+        // Set the motor speeds to zero
+        leftDriveMotor.setSpeed(0);
+        rightDriveMotor.setSpeed(0);
     }
 
     // Start driving with a given inverse turning radius and speed from zero to one
     public void driveContinuousSpeed(double inverseTurningRadiusMeters, double speed) {
-        // Set the current state
-        state = DriveBaseState.DRIVE_CONTINUOUS_SPEED;
-
         // Reset the distance counter to zero
         distanceTraveledMeters = 0;
 
@@ -78,11 +82,5 @@ public class DriveBase extends Subsystem {
         // Set the motor speeds with the previous calculated values
         leftDriveMotor.setSpeed(leftWheelSpeed);
         rightDriveMotor.setSpeed(rightWheelSpeed);
-    }
-
-    // An enum that contains the possible states of the robot
-    private enum DriveBaseState {
-        IDLE,
-        DRIVE_CONTINUOUS_SPEED
     }
 }

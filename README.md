@@ -1,12 +1,15 @@
 # Year2018
 This repository contains FIRST Robotics Competition Team 4069's robot code for the 2018 Power Up season.
 
-## Continuous Integration
+## Build Status
 Master:
 [![Build Status](https://travis-ci.org/team4069/Year2018.svg?branch=master)](https://travis-ci.org/team4069/Year2018)
 
 Develop:
 [![Build Status](https://travis-ci.org/team4069/Year2018.svg?branch=develop)](https://travis-ci.org/team4069/Year2018)
+
+## Commands and Subsystems
+We are generally trying to base our commands and subsystems architecture on the system described in the following article: https://github.com/BadRobots1014/BadRobot2013/wiki/Command-Based-Structure
 
 ## Contributing
 * All team members wishing to contribute should commit directly to the `develop` branch, where code will be tested.
