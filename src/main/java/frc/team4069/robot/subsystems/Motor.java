@@ -1,6 +1,7 @@
 package frc.team4069.robot.subsystems;
 
-class Motor extends Subsystem {
+// A simple motor wrapper that handles constant speed and ramping up and down
+class Motor {
 
     // An instance of the motor state enum
     private MotorState state = MotorState.IDLE;
@@ -11,7 +12,7 @@ class Motor extends Subsystem {
     }
 
     // Update the motor controls
-    public void update() {
+    void update() {
         // Do nothing for now
     }
 
