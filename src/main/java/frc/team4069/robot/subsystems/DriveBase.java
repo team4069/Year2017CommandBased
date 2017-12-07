@@ -24,7 +24,6 @@ public class DriveBase extends Subsystem {
         // Initialize the motors with port numbers 8 and 9
         leftDriveMotor = new Motor(8);
         rightDriveMotor = new Motor(9);
-        print("edgy");
     }
 
     // A public getter for the instance
@@ -32,7 +31,6 @@ public class DriveBase extends Subsystem {
         // If the instance is null, create a new one
         if (instance == null) {
             instance = new DriveBase();
-            print("hi");
         }
 
         return instance;

@@ -13,7 +13,6 @@ class Motor {
 
     // Initialize given a motor port number
     Motor(int portNumber) {
-        System.out.println("create");
         // Initialize the Talon
         talon = new CANTalon(portNumber);
     }
@@ -37,7 +36,6 @@ class Motor {
 
     // Set the speed of the motor, as a number from -1 to 1
     void setSpeed(double speedMinus1To1) {
-        System.out.println("set");
         // Set the state to constant speed
         state = MotorState.CONSTANT_SPEED;
         // Set the speed of the motor
@@ -46,6 +44,7 @@ class Motor {
 
     // An enum that contains the possible states of the motor
     private enum MotorState {
+        // Rotating at a constant speed or stopped
         CONSTANT_SPEED
     }
 }

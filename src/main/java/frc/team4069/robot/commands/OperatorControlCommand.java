@@ -12,7 +12,6 @@ public class OperatorControlCommand extends CommandBase {
     protected void initialize() {
         // Claim exclusive use of the drive base
         requires(driveBase);
-
         // The drive base should start out idle
         driveBase.stop();
     }

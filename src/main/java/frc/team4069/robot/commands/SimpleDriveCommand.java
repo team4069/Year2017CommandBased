@@ -7,7 +7,6 @@ public class SimpleDriveCommand extends CommandBase {
     protected void initialize() {
         // Claim exclusive use of the drive base
         requires(driveBase);
-
         // Start driving straight at 50% speed
         driveBase.driveContinuousSpeed(0, 0.5);
     }
