@@ -1,6 +1,6 @@
 package frc.team4069.robot.commands;
 
-import frc.team4069.robot.OI;
+import frc.team4069.robot.io.Input;
 
 // The main command for tele-op control
 public class OperatorControlCommand extends CommandBase {
@@ -19,9 +19,9 @@ public class OperatorControlCommand extends CommandBase {
     // Set drive base speeds using the joystick inputs
     protected void execute() {
         // The inverse turning radius should be a direct multiple of the joystick X axis
-        double inverseTurningRadius = OI.getDriveX() * xAxisMultiplier;
+        double inverseTurningRadius = Input.getDriveX() * xAxisMultiplier;
         // Use the joystick's Y axis as the speed of the drive base
-        double speed = OI.getDriveY();
+        double speed = Input.getDriveY();
         // Set the speed of the robot
         driveBase.driveContinuousSpeed(inverseTurningRadius, speed);
     }

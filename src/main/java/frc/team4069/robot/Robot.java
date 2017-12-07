@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.team4069.robot.commands.CommandBase;
 import frc.team4069.robot.commands.SimpleDriveCommand;
+import frc.team4069.robot.io.Input;
 
 // The core robot class that calls everything else
 public class Robot extends IterativeRobot {
@@ -14,7 +15,7 @@ public class Robot extends IterativeRobot {
     // Called when the robot first starts up
     public void robotInit() {
         // Initialize the joystick input class
-        OI.init();
+        Input.init();
         // Set the instance of the scheduler
         scheduler = Scheduler.getInstance();
         // Initialize all subsystems

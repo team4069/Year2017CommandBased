@@ -1,16 +1,16 @@
-package frc.team4069.robot;
+package frc.team4069.robot.io;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-// Input wrapper class that provides accessors for joystick inputs
-public class OI {
+// Input class that provides accessors for joystick inputs
+public class Input {
 
     // The main joystick
     private static Joystick joystick;
 
     // Initializer that handles mapping of the joysticks to real port numbers
-    static void init() {
-        joystick = new Joystick(1);
+    public static void init() {
+        joystick = new Joystick(IOMapping.DRIVE_JOYSTICK);
     }
 
     // Accessor for the X axis on the drive joystick
