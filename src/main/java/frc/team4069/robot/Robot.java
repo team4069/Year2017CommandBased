@@ -6,7 +6,7 @@ import frc.team4069.robot.commands.CommandBase;
 import frc.team4069.robot.commands.SimpleDriveCommand;
 
 // The core robot class that calls everything else
-class Robot extends IterativeRobot {
+public class Robot extends IterativeRobot {
 
     // An instance of the command scheduler
     private Scheduler scheduler;
