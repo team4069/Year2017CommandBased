@@ -15,10 +15,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         // Initialize the joystick input class
         OI.init();
-
         // Set the instance of the scheduler
         scheduler = Scheduler.getInstance();
-
         // Initialize all subsystems
         CommandBase.init();
     }
@@ -27,8 +25,13 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // Add a simple drive drive command to the scheduler
         scheduler.add(new SimpleDriveCommand());
+    }
 
+    // Called often during autonomous mode
+    public void autonomousPeriodic() {
         // Update all subsystems
         CommandBase.update();
+        // Update the scheduler
+        scheduler.run();
     }
 }

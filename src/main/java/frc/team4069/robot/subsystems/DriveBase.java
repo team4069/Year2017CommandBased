@@ -14,8 +14,8 @@ public class DriveBase extends Subsystem {
     private final double halfRobotWidthMeters = 0.5;
 
     // Left and right drive motors
-    private Motor leftDriveMotor = new Motor(1);
-    private Motor rightDriveMotor = new Motor(2);
+    private Motor leftDriveMotor = new Motor(8);
+    private Motor rightDriveMotor = new Motor(9);
 
     // A variable that records the distance traveled since the last state change in meters
     private double distanceTraveledMeters;
