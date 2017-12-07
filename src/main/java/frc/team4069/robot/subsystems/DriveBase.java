@@ -1,7 +1,6 @@
 package frc.team4069.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.team4069.robot.commands.DriveBaseIdleCommand;
 
 // A class that manages all hardware components of the drive base and provides utility functions
 // for instructing it to drive and turn in a variety of ways
@@ -14,17 +13,26 @@ public class DriveBase extends Subsystem {
     private final double halfRobotWidthMeters = 0.5;
 
     // Left and right drive motors
-    private Motor leftDriveMotor = new Motor(8);
-    private Motor rightDriveMotor = new Motor(9);
+    private Motor leftDriveMotor;
+    private Motor rightDriveMotor;
 
     // A variable that records the distance traveled since the last state change in meters
     private double distanceTraveledMeters;
+
+    // Initialize the motors
+    private DriveBase() {
+        // Initialize the motors with port numbers 8 and 9
+        leftDriveMotor = new Motor(8);
+        rightDriveMotor = new Motor(9);
+        print("edgy");
+    }
 
     // A public getter for the instance
     public static DriveBase getInstance() {
         // If the instance is null, create a new one
         if (instance == null) {
             instance = new DriveBase();
+            print("hi");
         }
 
         return instance;
@@ -45,7 +53,7 @@ public class DriveBase extends Subsystem {
     // Called to get the first command that the drive base should execute
     protected void initDefaultCommand() {
         // Set the current command to idle
-        setDefaultCommand(new DriveBaseIdleCommand());
+//        setDefaultCommand(new DriveBaseIdleCommand());
     }
 
     // Stop moving immediately

@@ -5,8 +5,6 @@ public class SimpleDriveCommand extends CommandBase {
 
     // Called to initialize the drive base
     protected void initialize() {
-        System.out.println("Init");
-
         // Claim exclusive use of the drive base
         requires(driveBase);
 
