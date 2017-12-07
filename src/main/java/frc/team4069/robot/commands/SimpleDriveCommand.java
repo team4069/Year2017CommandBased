@@ -13,13 +13,7 @@ public class SimpleDriveCommand extends CommandBase {
 
     // Called to check whether this command has completed
     protected boolean isFinished() {
-        // Check whether or not the drive base has driven 5 meters
-        if (driveBase.getDistanceTraveledMeters() >= 5) {
-            // Return true, meaning that the command has completed
-            return true;
-        } else {
-            // Otherwise, return false, meaning that the command is still running
-            return false;
-        }
+        // The command has finished if and only if the drive base has traveled 5 meters
+        return driveBase.getDistanceTraveledMeters() >= 5;
     }
 }

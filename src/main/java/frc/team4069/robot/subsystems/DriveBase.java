@@ -1,10 +1,10 @@
 package frc.team4069.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.team4069.robot.wrappers.Motor;
 
 // A class that manages all hardware components of the drive base and provides utility functions
 // for instructing it to drive and turn in a variety of ways
-public class DriveBase extends Subsystem {
+public class DriveBase extends SubsystemBase {
 
     // A singleton instance of the drive base
     private static DriveBase instance;
@@ -46,12 +46,6 @@ public class DriveBase extends Subsystem {
         // Update both motors
         leftDriveMotor.update();
         rightDriveMotor.update();
-    }
-
-    // Called to get the first command that the drive base should execute
-    protected void initDefaultCommand() {
-        // Set the current command to idle
-//        setDefaultCommand(new DriveBaseIdleCommand());
     }
 
     // Stop moving immediately
