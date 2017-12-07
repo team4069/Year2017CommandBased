@@ -13,6 +13,9 @@ class Robot extends IterativeRobot {
 
     // Called when the robot first starts up
     public void robotInit() {
+        // Initialize the joystick input class
+        OI.init();
+
         // Set the instance of the scheduler
         scheduler = Scheduler.getInstance();
 
