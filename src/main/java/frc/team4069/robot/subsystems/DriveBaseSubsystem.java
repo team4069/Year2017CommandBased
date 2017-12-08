@@ -1,7 +1,6 @@
 package frc.team4069.robot.subsystems;
 
 import frc.team4069.robot.io.IOMapping;
-import frc.team4069.robot.wrappers.Motor;
 import frc.team4069.robot.wrappers.TalonMotor;
 
 // A class that manages all hardware components of the drive base and provides utility functions
@@ -15,8 +14,8 @@ public class DriveBaseSubsystem extends SubsystemBase {
     private final double halfRobotWidthMeters = 0.5;
 
     // Left and right drive motors
-    private Motor leftDriveMotor;
-    private Motor rightDriveMotor;
+    private TalonMotor leftDriveMotor;
+    private TalonMotor rightDriveMotor;
 
     // A variable that records the distance traveled since the last state change in meters
     private double distanceTraveledMeters;

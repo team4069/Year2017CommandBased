@@ -1,7 +1,6 @@
 package frc.team4069.robot.subsystems;
 
 import frc.team4069.robot.io.IOMapping;
-import frc.team4069.robot.wrappers.Motor;
 import frc.team4069.robot.wrappers.TalonMotor;
 
 // A relatively simple control subsystem for the elevator
@@ -14,7 +13,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     private final double speed = 0.5;
 
     // The single elevator motor
-    private Motor elevatorMotor;
+    private TalonMotor elevatorMotor;
 
     // Initialize the elevator motor
     private ElevatorSubsystem() {
