@@ -36,9 +36,4 @@ public class Input {
     public static double getSpeedAxis() {
         return joystick.getRawAxis(IOMapping.DRIVE_SPEED_AXIS);
     }
-
-    // Accessor for the shooter button
-    public static boolean getShooterButton() {
-        return joystick.getRawButton(IOMapping.SHOOTER_BUTTON);
-    }
 }
