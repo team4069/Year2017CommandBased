@@ -18,6 +18,8 @@ public abstract class Motor {
         }
     }
 
+    abstract double getSpeed();
+
     // An enum that contains the possible states of the motor
     private enum MotorState {
         // Rotating at a constant speed or stopped

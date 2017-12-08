@@ -3,7 +3,7 @@ package frc.team4069.robot.wrappers;
 import edu.wpi.first.wpilibj.Talon;
 
 public class TalonMotor extends Motor {
-    Talon talon;
+    private Talon talon;
 
     public TalonMotor(int portNumber) {
         talon = new Talon(portNumber);
@@ -23,5 +23,10 @@ public class TalonMotor extends Motor {
     public void setSpeed(double speed) {
         super.setSpeed(speed);
         talon.setSpeed(speed);
+    }
+
+    @Override
+    public double getSpeed() {
+        return talon.getSpeed();
     }
 }

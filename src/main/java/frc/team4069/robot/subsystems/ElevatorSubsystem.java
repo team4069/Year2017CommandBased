@@ -42,4 +42,9 @@ public class ElevatorSubsystem extends SubsystemBase {
         // Stop the motor immediately
         elevatorMotor.stop();
     }
+
+
+    public boolean isStarted() {
+        return elevatorMotor.getSpeed() == speed;
+    }
 }
