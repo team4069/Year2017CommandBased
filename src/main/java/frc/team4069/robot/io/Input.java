@@ -3,8 +3,7 @@ package frc.team4069.robot.io;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.team4069.robot.commands.ElevatorStartCommand;
-import frc.team4069.robot.commands.ElevatorStopCommand;
+import frc.team4069.robot.commands.ElevatorToggleCommand;
 
 // Class that provides accessors for joystick inputs
 public class Input {
@@ -12,14 +11,17 @@ public class Input {
     // The main joystick
     private static Joystick joystick;
 
-    private static Button elevatorButton;
+    private static Button elevatorStartButton;
+    private static Button elevatorStopButton;
 
     // Initializer that handles mapping of the joysticks to real port numbers
     public static void init() {
         joystick = new Joystick(IOMapping.DRIVE_JOYSTICK_NUMBER);
-        elevatorButton = new JoystickButton(joystick, IOMapping.ELEVATOR_START_BUTTON);
-        elevatorButton.whenPressed(new ElevatorStartCommand());
-        elevatorButton.whenReleased(new ElevatorStopCommand());
+        elevatorStartButton = new JoystickButton(joystick, IOMapping.ELEVATOR_START_BUTTON);
+        elevatorStartButton.whenPressed(new ElevatorToggleCommand());
+
+//        elevatorStopButton = new JoystickButton(joystick, IOMapping.ELEVATOR_STOP_BUTTON);
+//        elevatorStopButton.whenPressed(new ElevatorStopCommand());
     }
 
     // Accessor for the steering axis on the drive joystick
@@ -30,16 +32,6 @@ public class Input {
     // Accessor for the speed axis on the drive joystick
     public static double getSpeedAxis() {
         return joystick.getRawAxis(IOMapping.DRIVE_SPEED_AXIS);
-    }
-
-    // Accessor for the button to enable the elevator
-    public static boolean getEnableElevatorButton() {
-        return joystick.getRawButton(IOMapping.ELEVATOR_START_BUTTON);
-    }
-
-    // Accessor for the button to disable the elevator
-    public static boolean getDisableElevatorButton() {
-        return joystick.getRawButton(IOMapping.ELEVATOR_STOP_BUTTON);
     }
 
     // Accessor for the shooter button
