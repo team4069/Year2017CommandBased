@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4069.robot.commands.ElevatorToggleCommand;
+import frc.team4069.robot.commands.FeederStartCommand;
+import frc.team4069.robot.commands.FeederStopCommand;
 
 // Class that provides accessors for joystick inputs
 public class Input {
@@ -12,7 +14,7 @@ public class Input {
     private static Joystick joystick;
 
     private static Button elevatorStartButton;
-    private static Button elevatorStopButton;
+    private static Button shooterButton;
 
     // Initializer that handles mapping of the joysticks to real port numbers
     public static void init() {
@@ -20,8 +22,9 @@ public class Input {
         elevatorStartButton = new JoystickButton(joystick, IOMapping.ELEVATOR_START_BUTTON);
         elevatorStartButton.whenPressed(new ElevatorToggleCommand());
 
-//        elevatorStopButton = new JoystickButton(joystick, IOMapping.ELEVATOR_STOP_BUTTON);
-//        elevatorStopButton.whenPressed(new ElevatorStopCommand());
+        shooterButton = new JoystickButton(joystick, IOMapping.SHOOTER_BUTTON);
+        shooterButton.whenPressed(new FeederStartCommand());
+        shooterButton.whenReleased(new FeederStopCommand());
     }
 
     // Accessor for the steering axis on the drive joystick

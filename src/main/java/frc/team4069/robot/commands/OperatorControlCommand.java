@@ -28,23 +28,14 @@ public class OperatorControlCommand extends CommandBase {
         // Set the speed of the robot
         driveBase.driveContinuousSpeed(inverseTurningRadius, speed);
 
-        // Start or stop the elevator depending on which buttons are being pressed
-//        if (Input.getDisableElevatorButton()) {
-//            elevator.stop();
-//        }
-        // Start the elevator only if the start button is pressed and the stop button is not
-//        else if (Input.getEnableElevatorButton()) {
-//            elevator.start();
-//        }
-
         // If the shooter button is being held, spin up the feeder and shooter
-        if (Input.getShooterButton()) {
-            feeder.start();
-        }
+//        if (Input.getShooterButton()) {
+//            feeder.start();
+//        }
         // If it is not being held, stop immediately
-        else {
-            feeder.stop();
-        }
+//        else {
+//            feeder.stop();
+//        }
     }
 
     // Called to check whether this command has completed
