@@ -10,6 +10,9 @@ public class IOMapping {
     // PWM port for the elevator motor
     public static final int ELEVATOR_PWM = 6;
 
+    // PWM port for the feeder
+    public static final int FEED_PWM = 3;
+
     // The port number of the drive joystick
     static final int DRIVE_JOYSTICK_NUMBER = 0;
 
