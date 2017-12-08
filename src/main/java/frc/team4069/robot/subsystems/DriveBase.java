@@ -77,7 +77,8 @@ public class DriveBase extends SubsystemBase {
         // Continuing the previous example, assuming the overall speed of the robot is scaled to 1,
         // indeed the left wheel should rotate at a speed of 1.5 (1 + 0.5)
         // and the right wheel should rotate at 0.5 (1 - 0.5)
-        double leftWheelSpeed = (1 + individualWheelSpeedRelativeToAverage) * speed;
+        // Also, the left wheel's speed needs to be reversed because of its physical orientation
+        double leftWheelSpeed = -(1 + individualWheelSpeedRelativeToAverage) * speed;
         double rightWheelSpeed = (1 - individualWheelSpeedRelativeToAverage) * speed;
 
         // Set the motor speeds with the previous calculated values
