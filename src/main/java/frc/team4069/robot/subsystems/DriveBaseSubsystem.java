@@ -2,6 +2,7 @@ package frc.team4069.robot.subsystems;
 
 import frc.team4069.robot.io.IOMapping;
 import frc.team4069.robot.wrappers.Motor;
+import frc.team4069.robot.wrappers.TalonMotor;
 
 // A class that manages all hardware components of the drive base and provides utility functions
 // for instructing it to drive and turn in a variety of ways
@@ -23,8 +24,8 @@ public class DriveBaseSubsystem extends SubsystemBase {
     // Initialize the drive motors
     private DriveBaseSubsystem() {
         // Initialize the motors with predefined port numbers
-        leftDriveMotor = new Motor(IOMapping.LEFT_DRIVE_PWM);
-        rightDriveMotor = new Motor(IOMapping.RIGHT_DRIVE_PWM);
+        leftDriveMotor = new TalonMotor(IOMapping.LEFT_DRIVE_PWM);
+        rightDriveMotor = new TalonMotor(IOMapping.RIGHT_DRIVE_PWM);
     }
 
     // A public getter for the instance
