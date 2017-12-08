@@ -13,6 +13,9 @@ public class IOMapping {
     // PWM port for the feeder
     public static final int FEEDER_PWM = 3;
 
+    // CAN bus port for the shooter
+    public static final int SHOOTER_CAN_BUS = 0;
+
     // The port number of the drive joystick
     static final int DRIVE_JOYSTICK_NUMBER = 0;
 

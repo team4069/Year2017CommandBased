@@ -9,7 +9,7 @@ public class FeederSubsystem extends SubsystemBase {
     // A singleton instance of the feeder subsystem
     private static FeederSubsystem instance;
 
-    // The speed of the elevator when running
+    // The speed of the feeder when running
     private final double speed = 0.5;
 
     // The single feeder motor
@@ -37,7 +37,7 @@ public class FeederSubsystem extends SubsystemBase {
         feederMotor.setSpeed(-speed);
     }
 
-    // Stop the elevator
+    // Stop the feeder
     public void stop() {
         // Stop the motor immediately
         feederMotor.stop();

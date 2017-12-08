@@ -40,10 +40,12 @@ public class OperatorControlCommand extends CommandBase {
         // If the shooter button is being held, spin up the feeder and shooter
         if (Input.getShooterButton()) {
             feeder.start();
+            shooter.start();
         }
         // If it is not being held, stop immediately
         else {
             feeder.stop();
+            shooter.stop();
         }
     }
 
@@ -52,5 +54,4 @@ public class OperatorControlCommand extends CommandBase {
         // Always return false because this command should never finish
         return false;
     }
-
 }
