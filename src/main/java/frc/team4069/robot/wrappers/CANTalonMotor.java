@@ -21,6 +21,7 @@ public class CANTalonMotor extends Motor {
 
     @Override
     public void setSpeed(double speed) {
+        super.setSpeed(speed);
         talon.set(speed);
     }
 }
