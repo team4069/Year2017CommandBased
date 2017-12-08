@@ -1,11 +1,11 @@
 package frc.team4069.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.team4069.robot.commands.DriveBaseIdleCommand;
+import frc.team4069.robot.io.IOMapping;
+import frc.team4069.robot.wrappers.Motor;
 
 // A class that manages all hardware components of the drive base and provides utility functions
 // for instructing it to drive and turn in a variety of ways
-public class DriveBase extends Subsystem {
+public class DriveBase extends SubsystemBase {
 
     // A singleton instance of the drive base
     private static DriveBase instance;
@@ -14,11 +14,18 @@ public class DriveBase extends Subsystem {
     private final double halfRobotWidthMeters = 0.5;
 
     // Left and right drive motors
-    private Motor leftDriveMotor = new Motor(1);
-    private Motor rightDriveMotor = new Motor(2);
+    private Motor leftDriveMotor;
+    private Motor rightDriveMotor;
 
     // A variable that records the distance traveled since the last state change in meters
     private double distanceTraveledMeters;
+
+    // Initialize the motors
+    private DriveBase() {
+        // Initialize the motors with predefined port numbers
+        leftDriveMotor = new Motor(IOMapping.LEFT_DRIVE_PWM);
+        rightDriveMotor = new Motor(IOMapping.RIGHT_DRIVE_PWM);
+    }
 
     // A public getter for the instance
     public static DriveBase getInstance() {
@@ -40,12 +47,6 @@ public class DriveBase extends Subsystem {
         // Update both motors
         leftDriveMotor.update();
         rightDriveMotor.update();
-    }
-
-    // Called to get the first command that the drive base should execute
-    protected void initDefaultCommand() {
-        // Set the current command to idle
-        setDefaultCommand(new DriveBaseIdleCommand());
     }
 
     // Stop moving immediately
@@ -76,7 +77,8 @@ public class DriveBase extends Subsystem {
         // Continuing the previous example, assuming the overall speed of the robot is scaled to 1,
         // indeed the left wheel should rotate at a speed of 1.5 (1 + 0.5)
         // and the right wheel should rotate at 0.5 (1 - 0.5)
-        double leftWheelSpeed = (1 + individualWheelSpeedRelativeToAverage) * speed;
+        // Also, the left wheel's speed needs to be reversed because of its physical orientation
+        double leftWheelSpeed = -(1 + individualWheelSpeedRelativeToAverage) * speed;
         double rightWheelSpeed = (1 - individualWheelSpeedRelativeToAverage) * speed;
 
         // Set the motor speeds with the previous calculated values
