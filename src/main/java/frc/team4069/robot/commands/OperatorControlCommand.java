@@ -19,7 +19,7 @@ public class OperatorControlCommand extends CommandBase {
     // Set drive base speeds using the joystick inputs
     protected void execute() {
         // The inverse turning radius should be a direct multiple of the joystick X axis
-        double inverseTurningRadius = Input.getDriveX() * xAxisMultiplier;
+        double inverseTurningRadius = Input.getSteeringAxis() * xAxisMultiplier;
         // Use the joystick's Y axis as the speed of the drive base
         double speed = Input.getDriveY();
         // Set the speed of the robot

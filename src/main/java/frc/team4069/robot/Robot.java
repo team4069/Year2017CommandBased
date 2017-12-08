@@ -3,7 +3,7 @@ package frc.team4069.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.team4069.robot.commands.CommandBase;
-import frc.team4069.robot.commands.SimpleDriveCommand;
+import frc.team4069.robot.commands.OperatorControlCommand;
 import frc.team4069.robot.io.Input;
 
 // The core robot class that calls everything else
@@ -25,7 +25,7 @@ public class Robot extends IterativeRobot {
     // Called at the beginning of autonomous mode
     public void autonomousInit() {
         // Add a simple drive drive command to the scheduler
-        scheduler.add(new SimpleDriveCommand());
+        scheduler.add(new OperatorControlCommand());
     }
 
     // Called often during autonomous mode

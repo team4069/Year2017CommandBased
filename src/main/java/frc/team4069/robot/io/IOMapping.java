@@ -8,5 +8,10 @@ public class IOMapping {
     public static final int RIGHT_DRIVE_PWM = 9;
 
     // Drive joystick port number
-    static final int DRIVE_JOYSTICK = 1;
+    static final int DRIVE_JOYSTICK = 0;
+    // Axis numbers for steering and speed on the drive joystick
+    // The steering axis is the horizontal axis of the right stick
+    static final int STEERING_AXIS = 0;
+    // The speed axis is the vertical axis of the right stick
+    static final int SPEED_AXIS = 1;
 }

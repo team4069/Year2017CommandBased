@@ -13,15 +13,15 @@ public class Input {
         joystick = new Joystick(IOMapping.DRIVE_JOYSTICK);
     }
 
-    // Accessor for the X axis on the drive joystick
-    public static double getDriveX() {
+    // Accessor for the steering axis on the drive joystick
+    public static double getSteeringAxis() {
         // Get the value directly from the joystick
-        return joystick.getX();
+        return joystick.getRawAxis(IOMapping.STEERING_AXIS);
     }
 
-    // Accessor for the Y axis on the drive joystick
+    // Accessor for the speed axis on the drive joystick
     public static double getDriveY() {
         // Get the value directly from the joystick
-        return joystick.getY();
+        return joystick.getRawAxis(IOMapping.SPEED_AXIS);
     }
 }
