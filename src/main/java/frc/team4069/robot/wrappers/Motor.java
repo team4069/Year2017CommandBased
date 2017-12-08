@@ -1,12 +1,12 @@
 package frc.team4069.robot.wrappers;
 
-import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.Talon;
 
 // A simple motor wrapper that handles constant speed and ramping up and down
 public class Motor {
 
     // The Talon controller for the motor
-    private CANTalon talon;
+    private Talon talon;
 
     // An instance of the motor state enum
     private MotorState state = MotorState.CONSTANT_SPEED;
@@ -14,7 +14,7 @@ public class Motor {
     // Initialize given a motor port number
     public Motor(int portNumber) {
         // Initialize the Talon
-        talon = new CANTalon(portNumber);
+        talon = new Talon(portNumber);
     }
 
     // Update the motor controls
