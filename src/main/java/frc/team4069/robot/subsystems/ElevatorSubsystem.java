@@ -1,7 +1,7 @@
 package frc.team4069.robot.subsystems;
 
 import frc.team4069.robot.io.IOMapping;
-import frc.team4069.robot.wrappers.TalonMotor;
+import frc.team4069.robot.motors.TalonMotor;
 
 // A relatively simple control subsystem for the elevator
 public class ElevatorSubsystem extends SubsystemBase {

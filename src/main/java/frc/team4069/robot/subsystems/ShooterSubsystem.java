@@ -1,7 +1,7 @@
 package frc.team4069.robot.subsystems;
 
 import frc.team4069.robot.io.IOMapping;
-import frc.team4069.robot.wrappers.CANTalonMotor;
+import frc.team4069.robot.motors.CANTalonMotor;
 
 // A relatively simple control subsystem for the shooter
 public class ShooterSubsystem extends SubsystemBase {

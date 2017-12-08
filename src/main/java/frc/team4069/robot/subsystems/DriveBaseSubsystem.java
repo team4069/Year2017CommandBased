@@ -1,7 +1,7 @@
 package frc.team4069.robot.subsystems;
 
 import frc.team4069.robot.io.IOMapping;
-import frc.team4069.robot.wrappers.TalonMotor;
+import frc.team4069.robot.motors.TalonMotor;
 
 // A class that manages all hardware components of the drive base and provides utility functions
 // for instructing it to drive and turn in a variety of ways
