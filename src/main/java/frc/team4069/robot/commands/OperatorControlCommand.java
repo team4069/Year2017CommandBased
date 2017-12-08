@@ -36,6 +36,15 @@ public class OperatorControlCommand extends CommandBase {
         else if (Input.getEnableElevatorButton()) {
             elevator.start();
         }
+
+        // If the shooter button is being held, spin up the feeder and shooter
+        if (Input.getShooterButton()) {
+            feeder.start();
+        }
+        // If it is not being held, stop immediately
+        else {
+            feeder.stop();
+        }
     }
 
     // Called to check whether this command has completed

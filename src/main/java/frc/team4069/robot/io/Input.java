@@ -32,4 +32,9 @@ public class Input {
     public static boolean getDisableElevatorButton() {
         return joystick.getRawButton(IOMapping.ELEVATOR_STOP_BUTTON);
     }
+
+    // Accessor for the shooter button
+    public static boolean getShooterButton() {
+        return joystick.getRawButton(IOMapping.SHOOTER_BUTTON);
+    }
 }
