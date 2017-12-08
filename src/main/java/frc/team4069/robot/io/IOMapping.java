@@ -8,16 +8,16 @@ public class IOMapping {
     public static final int RIGHT_DRIVE_PWM = 9;
 
     // PWM port for the elevator motor
-    public static final int ELEVATOR_PWM = 6;
+    public static final int ELEVATOR_PWM = 2;
 
     // The port number of the drive joystick
     static final int DRIVE_JOYSTICK_NUMBER = 0;
 
     // Axis numbers for steering and speed on the drive joystick
     // The steering axis is the horizontal axis of the right stick
-    static final int DRIVE_STEERING_AXIS = 0;
+    static final int DRIVE_STEERING_AXIS = 4;
     // The speed axis is the vertical axis of the right stick
-    static final int DRIVE_SPEED_AXIS = 1;
+    static final int DRIVE_SPEED_AXIS = 5;
 
     // Button numbers for elevator control
     // The A button should enable the elevator
