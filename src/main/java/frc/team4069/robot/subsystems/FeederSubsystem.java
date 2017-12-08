@@ -1,7 +1,7 @@
 package frc.team4069.robot.subsystems;
 
 import frc.team4069.robot.io.IOMapping;
-import frc.team4069.robot.wrappers.Motor;
+import frc.team4069.robot.wrappers.TalonMotor;
 
 // A relatively simple control subsystem for the feeder
 public class FeederSubsystem extends SubsystemBase {
@@ -13,12 +13,12 @@ public class FeederSubsystem extends SubsystemBase {
     private final double speed = 0.5;
 
     // The single feeder motor
-    private Motor feederMotor;
+    private TalonMotor feederMotor;
 
     // Initialize the feeder motor
     private FeederSubsystem() {
         // Initialize the motor with the predefined port number
-        feederMotor = new Motor(IOMapping.FEEDER_PWM);
+        feederMotor = new TalonMotor(IOMapping.FEEDER_PWM);
     }
 
     // A public getter for the instance
