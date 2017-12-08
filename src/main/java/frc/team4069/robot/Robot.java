@@ -3,6 +3,7 @@ package frc.team4069.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.team4069.robot.commands.CommandBase;
+import frc.team4069.robot.commands.OperatorControlCommand;
 import frc.team4069.robot.commands.SimpleDriveCommand;
 import frc.team4069.robot.io.Input;
 
@@ -28,11 +29,31 @@ public class Robot extends IterativeRobot {
         scheduler.add(new SimpleDriveCommand());
     }
 
-    // Called often during autonomous mode
-    public void autonomousPeriodic() {
+    // Called at the beginning of tele-operated mode
+    public void teleopInit() {
+        // Remove all commands from the scheduler so no autonomous tasks continue running
+        scheduler.removeAll();
+        // Add an operator control command to the scheduler which should never exit
+        scheduler.add(new OperatorControlCommand());
+    }
+
+    // A universal update method that is called during both autonomous and operator control
+    private void universalPeriodic() {
         // Update all subsystems
         CommandBase.update();
         // Update the scheduler
         scheduler.run();
+    }
+
+    // Called often during autonomous mode
+    public void autonomousPeriodic() {
+        // Call the universal update method
+        universalPeriodic();
+    }
+
+    // Called often during operator control mode
+    public void teleopPeriodic() {
+        // Call the universal update method
+        universalPeriodic();
     }
 }

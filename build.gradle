@@ -42,3 +42,13 @@ jar {
 task wrapper(type: Wrapper) {
     gradleVersion = '4.2.1'
 }
+
+task preDeployHook(type: Exec) {
+    commandLine './util/pre-deploy.sh'
+}
+
+task postDeployHook(type: Exec) {
+    commandLine './util/post-deploy.sh'
+}
+
+postDeployHook.mustRunAfter "deploy"

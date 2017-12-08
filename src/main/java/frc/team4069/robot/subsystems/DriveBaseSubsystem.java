@@ -5,10 +5,10 @@ import frc.team4069.robot.wrappers.Motor;
 
 // A class that manages all hardware components of the drive base and provides utility functions
 // for instructing it to drive and turn in a variety of ways
-public class DriveBase extends SubsystemBase {
+public class DriveBaseSubsystem extends SubsystemBase {
 
-    // A singleton instance of the drive base
-    private static DriveBase instance;
+    // A singleton instance of the drive base subsystem
+    private static DriveBaseSubsystem instance;
 
     // The horizontal distance from the center of the robot to the outer wheels
     private final double halfRobotWidthMeters = 0.5;
@@ -20,18 +20,18 @@ public class DriveBase extends SubsystemBase {
     // A variable that records the distance traveled since the last state change in meters
     private double distanceTraveledMeters;
 
-    // Initialize the motors
-    private DriveBase() {
+    // Initialize the drive motors
+    private DriveBaseSubsystem() {
         // Initialize the motors with predefined port numbers
         leftDriveMotor = new Motor(IOMapping.LEFT_DRIVE_PWM);
         rightDriveMotor = new Motor(IOMapping.RIGHT_DRIVE_PWM);
     }
 
     // A public getter for the instance
-    public static DriveBase getInstance() {
+    public static DriveBaseSubsystem getInstance() {
         // If the instance is null, create a new one
         if (instance == null) {
-            instance = new DriveBase();
+            instance = new DriveBaseSubsystem();
         }
 
         return instance;
