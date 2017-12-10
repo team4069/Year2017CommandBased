@@ -1,9 +1,22 @@
+// Pulling down the Kotlin plugin from central
+buildscript {
+    ext.kotlin_version = "1.2.0"
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
 plugins {
     id "java"
     id "eclipse"
     id "idea"
     id "jaci.openrio.gradle.GradleRIO" version "2017.11.27"
 }
+
+apply plugin: "kotlin"
 
 def TEAM = 4069
 def ROBOT_CLASS = "frc.team4069.robot.Robot"
@@ -23,12 +36,18 @@ deploy {
     }
 }
 
+// Kotlin stdlib resides in central
+repositories {
+    mavenCentral()
+}
+
 // Defining my dependencies. In this case, WPILib (+ friends), CTRE Toolsuite (Talon SRX)
 // and NavX.
 dependencies {
     compile wpilib()
     compile ctre()
     compile navx()
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
