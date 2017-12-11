@@ -3,6 +3,7 @@ package frc.team4069.robot.io;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.team4069.robot.commands.ClimberToggleCommand;
 import frc.team4069.robot.commands.ElevatorToggleCommand;
 import frc.team4069.robot.commands.ShooterStartCommand;
 import frc.team4069.robot.commands.ShooterStopCommand;
@@ -16,6 +17,8 @@ public class Input {
     private static Button elevatorToggleButton;
     // Joystick button to run the shooter and feeder when held
     private static Button shooterButton;
+    // Joystick button to toggle the climber
+    private static Button climberButton;
 
     // Initializer that handles mapping of the joysticks to commands
     public static void init() {
@@ -30,6 +33,9 @@ public class Input {
         shooterButton = new JoystickButton(joystick, IOMapping.SHOOTER_BUTTON);
         shooterButton.whenPressed(new ShooterStartCommand());
         shooterButton.whenReleased(new ShooterStopCommand());
+
+        climberButton = new JoystickButton(joystick, IOMapping.CLIMBER_BUTTON);
+        climberButton.whenPressed(new ClimberToggleCommand());
     }
 
     // Accessor for the steering axis on the drive joystick

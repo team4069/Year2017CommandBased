@@ -1,6 +1,7 @@
 package frc.team4069.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.team4069.robot.subsystems.ClimberSubsystem;
 import frc.team4069.robot.subsystems.DriveBaseSubsystem;
 import frc.team4069.robot.subsystems.ElevatorSubsystem;
 import frc.team4069.robot.subsystems.FeederSubsystem;
@@ -10,10 +11,11 @@ import frc.team4069.robot.subsystems.ShooterSubsystem;
 public abstract class CommandBase extends Command {
 
     // Instances of each of the subsystems
-    static DriveBaseSubsystem driveBase;
-    static ElevatorSubsystem elevator;
-    static FeederSubsystem feeder;
-    static ShooterSubsystem shooter;
+    public static DriveBaseSubsystem driveBase;
+    public static ElevatorSubsystem elevator;
+    public static FeederSubsystem feeder;
+    public static ShooterSubsystem shooter;
+    public static ClimberSubsystem climber;
 
     // An function that handles initialization of subsystems
     public static void init() {
@@ -22,6 +24,7 @@ public abstract class CommandBase extends Command {
         elevator = ElevatorSubsystem.getInstance();
         feeder = FeederSubsystem.getInstance();
         shooter = ShooterSubsystem.getInstance();
+        climber = ClimberSubsystem.getInstance();
     }
 
     // A function called periodically to update all subsystems
