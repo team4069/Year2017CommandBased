@@ -10,7 +10,7 @@ public class FeederSubsystem extends SubsystemBase {
     private static FeederSubsystem instance;
 
     // The speed of the feeder when running
-    private final double speed = 1;
+    private final double speed = 0.8;
 
     // The single feeder motor
     private TalonMotor feederMotor;
@@ -33,7 +33,7 @@ public class FeederSubsystem extends SubsystemBase {
 
     // Start running the feeder at full speed
     public void start() {
-        // Set the motor speed to the predefined constant, but negative
+        // Set the motor speed to the predefined constant, but negative (to run the motor in the correct direction)
         feederMotor.setSpeed(-speed);
     }
 

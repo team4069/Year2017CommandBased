@@ -1,5 +1,7 @@
 package frc.team4069.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
+
 // A command to start running the shooter and the feeder
 public class ShooterStartCommand extends CommandBase {
 
@@ -7,6 +9,7 @@ public class ShooterStartCommand extends CommandBase {
     @Override
     protected void initialize() {
         shooter.start();
+        Timer.delay(1.5);
         feeder.start();
     }
 
