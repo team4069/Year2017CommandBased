@@ -10,7 +10,7 @@ public class FeederSubsystem extends SubsystemBase {
     private static FeederSubsystem instance;
 
     // The speed of the feeder when running
-    private final double speed = 0.5;
+    private final double speed = 1;
 
     // The single feeder motor
     private TalonMotor feederMotor;
