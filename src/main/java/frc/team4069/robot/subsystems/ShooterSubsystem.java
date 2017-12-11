@@ -10,7 +10,7 @@ public class ShooterSubsystem extends SubsystemBase {
     private static ShooterSubsystem instance;
 
     // The speed of the shooter when running
-    private final double speed = 1;
+    private final double speed = 0.7;
 
     // The single shooter motor
     private CANTalonMotor shooterMotor;
