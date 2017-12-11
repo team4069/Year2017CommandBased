@@ -26,10 +26,8 @@ public class IOMapping {
     static final int DRIVE_SPEED_AXIS = 5;
 
     // Button numbers for elevator control
-    // The A button should enable the elevator
-    static final int ELEVATOR_START_BUTTON = 1;
-    // The B button should disable the elevator
-    static final int ELEVATOR_STOP_BUTTON = 2;
+    // The A button should toggle the elevator
+    static final int ELEVATOR_TOGGLE_BUTTON = 1;
 
     // The X button should run the shooter
     static final int SHOOTER_BUTTON = 3;

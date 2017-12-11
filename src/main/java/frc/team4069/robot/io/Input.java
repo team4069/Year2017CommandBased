@@ -4,27 +4,32 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4069.robot.commands.ElevatorToggleCommand;
-import frc.team4069.robot.commands.FeederStartCommand;
-import frc.team4069.robot.commands.FeederStopCommand;
+import frc.team4069.robot.commands.ShooterStartCommand;
+import frc.team4069.robot.commands.ShooterStopCommand;
 
-// Class that provides accessors for joystick inputs
+// Class that provides accessors for joystick inputs and maps them to commands
 public class Input {
 
     // The main joystick
     private static Joystick joystick;
-
-    private static Button elevatorStartButton;
+    // Joystick button to toggle the elevator
+    private static Button elevatorToggleButton;
+    // Joystick button to run the shooter and feeder when held
     private static Button shooterButton;
 
-    // Initializer that handles mapping of the joysticks to real port numbers
+    // Initializer that handles mapping of the joysticks to commands
     public static void init() {
+        // Create the joystick using the port number
         joystick = new Joystick(IOMapping.DRIVE_JOYSTICK_NUMBER);
-        elevatorStartButton = new JoystickButton(joystick, IOMapping.ELEVATOR_START_BUTTON);
-        elevatorStartButton.whenPressed(new ElevatorToggleCommand());
 
+        // Map the elevator toggle button to enable or disable the elevator
+        elevatorToggleButton = new JoystickButton(joystick, IOMapping.ELEVATOR_TOGGLE_BUTTON);
+        elevatorToggleButton.whenPressed(new ElevatorToggleCommand());
+
+        // Map the shooter button to run the shooter when held and stop it when released
         shooterButton = new JoystickButton(joystick, IOMapping.SHOOTER_BUTTON);
-        shooterButton.whenPressed(new FeederStartCommand());
-        shooterButton.whenReleased(new FeederStopCommand());
+        shooterButton.whenPressed(new ShooterStartCommand());
+        shooterButton.whenReleased(new ShooterStopCommand());
     }
 
     // Accessor for the steering axis on the drive joystick
