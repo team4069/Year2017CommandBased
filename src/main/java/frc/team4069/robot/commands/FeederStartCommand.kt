@@ -11,11 +11,6 @@ class FeederStartCommand : Command() {
         Robot.feeder.start()
     }
 
-    @Synchronized override fun cancel() {
-        super.cancel()
-        Robot.feeder.stop()
-    }
-
     override fun isFinished(): Boolean {
         return true
     }

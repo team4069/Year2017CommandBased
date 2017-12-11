@@ -21,14 +21,12 @@ class DriveBaseSubsystem : SubsystemBase() {
 
     // A function called periodically and used to send updates to the motors
     fun update() {
-        // Update both motors
         leftDriveMotor.update()
         rightDriveMotor.update()
     }
 
     // Stop moving immediately
     fun stop() {
-        // Set the motor speeds to zero
         leftDriveMotor.stop()
         rightDriveMotor.stop()
     }

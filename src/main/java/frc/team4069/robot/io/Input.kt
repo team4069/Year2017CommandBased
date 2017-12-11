@@ -3,10 +3,7 @@ package frc.team4069.robot.io
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj.buttons.Button
 import edu.wpi.first.wpilibj.buttons.JoystickButton
-import frc.team4069.robot.commands.ElevatorStartCommand
-import frc.team4069.robot.commands.ElevatorStopCommand
-import frc.team4069.robot.commands.ElevatorToggleCommand
-import frc.team4069.robot.commands.FeederStartCommand
+import frc.team4069.robot.commands.*
 
 // Class that provides accessors for joystick inputs
 object Input {
@@ -33,7 +30,9 @@ object Input {
         elevatorStartButton.whenPressed(ElevatorToggleCommand(ElevatorStopCommand(),
                 ElevatorStartCommand()))
 
-        shooterButton = JoystickButton(joystick, IOMapping.SHOOTER_BUTTON)
-        shooterButton.whileHeld(FeederStartCommand())
+        shooterButton = JoystickButton(joystick, IOMapping.SHOOTER_BUTTON).apply {
+            whenPressed(FeederStartCommand())
+            whenReleased(FeederStopCommand())
+        }
     }
 }

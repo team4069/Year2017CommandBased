@@ -12,24 +12,20 @@ class ElevatorSubsystem : SubsystemBase() {
     // The single elevator motor
     private val elevatorMotor: TalonMotor = TalonMotor(IOMapping.ELEVATOR_PWM)
 
-
     val isStarted: Boolean
         get() = elevatorMotor.speed == speed
 
     // Start running the elevator at full speed
     fun start() {
-        // Set the motor speed to the predefined constant
         elevatorMotor.speed = speed
     }
 
     // Stop the elevator
     fun stop() {
-        // Stop the motor immediately
         elevatorMotor.stop()
     }
 
     companion object {
-
         // A singleton instance of the elevator subsystem
         val instance: ElevatorSubsystem by lazy {
             ElevatorSubsystem()
