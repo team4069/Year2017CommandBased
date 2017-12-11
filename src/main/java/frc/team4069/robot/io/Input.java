@@ -34,6 +34,7 @@ public class Input {
         shooterButton.whenPressed(new ShooterStartCommand());
         shooterButton.whenReleased(new ShooterStopCommand());
 
+        // Map the climber button to toggle the climber
         climberButton = new JoystickButton(joystick, IOMapping.CLIMBER_BUTTON);
         climberButton.whenPressed(new ClimberToggleCommand());
     }

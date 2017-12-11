@@ -3,36 +3,49 @@ package frc.team4069.robot.subsystems;
 import frc.team4069.robot.io.IOMapping;
 import frc.team4069.robot.motors.TalonMotor;
 
+// A control subsystem for the climber
 public class ClimberSubsystem extends SubsystemBase {
 
+    // A singleton instance of the climber subsystem
     private static ClimberSubsystem instance;
 
+    // The speed of the climber when running
+    private final double speed = 1;
+
+    // The single climber motor
     private TalonMotor climberMotor;
 
-    private double speed = 1;
-
+    // Initialize the climber motor
     private ClimberSubsystem() {
-        this.climberMotor = new TalonMotor(IOMapping.CLIMBER_PWM);
+        // Initialize the motor with the predefined port number
+        climberMotor = new TalonMotor(IOMapping.CLIMBER_PWM);
     }
 
-
+    // A public getter for the instance
     public static ClimberSubsystem getInstance() {
-        if(instance == null) {
+        // If the instance is null, create a new one
+        if (instance == null) {
             instance = new ClimberSubsystem();
         }
 
         return instance;
     }
 
-    public boolean isStarted() {
-        return climberMotor.getSpeed() == speed;
-    }
-
+    // Start running the climber at full speed
     public void start() {
-        climberMotor.setSpeed(speed);
+        // Set the motor speed to the predefined constant, but negative
+        climberMotor.setSpeed(-speed);
     }
 
+    // Stop the climber
     public void stop() {
-        climberMotor.setSpeed(0);
+        // Stop the motor immediately
+        climberMotor.stop();
+    }
+
+    // Used to check if the climber is currently running
+    public boolean isStarted() {
+        // Check if the current speed is equal to the running speed
+        return climberMotor.getSpeed() == speed;
     }
 }
