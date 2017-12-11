@@ -10,7 +10,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     private static ElevatorSubsystem instance;
 
     // The speed of the elevator when running
-    private final double speed = 0.5;
+    private final double speed = 0.8;
 
     // The single elevator motor
     private TalonMotor elevatorMotor;
