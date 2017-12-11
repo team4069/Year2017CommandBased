@@ -18,17 +18,16 @@ abstract class Motor {
 
     // Set the speed of the motor, as a number from -1 to 1
     public final void setSpeed(double speed) {
-        // If the speed is outside the range of -1 to 1
-        if (speed < -1 || speed > 1) {
-            // Stop the motor to ensure safety
-            stop();
-            // Throw an error
-            throw new IllegalArgumentException("Speed must be between 1 and -1.");
+        // Create a mutable speed value that will be used to set the motor
+        double boundedSpeed = speed;
+        // If the motor's speed is greater than 1
+        if (speed > 1) {
+            boundedSpeed = 1;
+        } else if (speed < -1) {
+            boundedSpeed = -1;
         }
-        // Otherwise, set the speed of the motor to the supplied value
-        else {
-            setSpeedUnsafe(speed);
-        }
+        // Otherwise, set the speed of the motor to the calculated value
+        setSpeedUnsafe(boundedSpeed);
     }
 
     // Set the speed of the motor without checking its validity
