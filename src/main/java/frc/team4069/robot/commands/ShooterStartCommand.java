@@ -9,6 +9,7 @@ public class ShooterStartCommand extends CommandBase {
     @Override
     protected void initialize() {
         shooter.start();
+        // Delay feeder slightly to allow time for shooter to get to full speed
         Timer.delay(1.5);
         feeder.start();
     }

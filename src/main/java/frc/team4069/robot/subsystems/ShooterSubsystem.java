@@ -33,7 +33,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
     // Start running the shooter at full speed
     public void start() {
-        // Set the motor speed to the predefined constant, but negative
+        // Set the motor speed to the predefined constant
         shooterMotor.setSpeed(speed);
     }
 
