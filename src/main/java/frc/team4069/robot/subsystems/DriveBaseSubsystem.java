@@ -82,7 +82,7 @@ public class DriveBaseSubsystem extends SubsystemBase {
         double rightWheelSpeed = (1 - individualWheelSpeedRelativeToAverage) * speed;
 
         // Set the motor speeds with the previous calculated values
-        leftDriveMotor.setSpeed(leftWheelSpeed);
-        rightDriveMotor.setSpeed(rightWheelSpeed);
+        leftDriveMotor.setConstantSpeed(leftWheelSpeed);
+        rightDriveMotor.setConstantSpeed(rightWheelSpeed);
     }
 }

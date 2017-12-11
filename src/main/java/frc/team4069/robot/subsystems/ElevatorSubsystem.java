@@ -34,7 +34,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     // Start running the elevator at full speed
     public void start() {
         // Set the motor speed to the predefined constant
-        elevatorMotor.setSpeed(speed);
+        elevatorMotor.setConstantSpeed(speed);
     }
 
     // Stop the elevator

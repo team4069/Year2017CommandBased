@@ -34,7 +34,7 @@ public class ClimberSubsystem extends SubsystemBase {
     // Start running the climber at full speed
     public void start() {
         // Set the motor speed to the predefined constant, but negative
-        climberMotor.setSpeed(-speed);
+        climberMotor.setConstantSpeed(-speed);
     }
 
     // Stop the climber

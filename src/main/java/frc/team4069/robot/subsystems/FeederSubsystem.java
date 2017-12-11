@@ -34,7 +34,7 @@ public class FeederSubsystem extends SubsystemBase {
     // Start running the feeder at full speed
     public void start() {
         // Set the motor speed to the predefined constant, but negative
-        feederMotor.setSpeed(-speed);
+        feederMotor.setConstantSpeed(-speed);
     }
 
     // Stop the feeder
