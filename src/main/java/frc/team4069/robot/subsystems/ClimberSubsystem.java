@@ -46,6 +46,6 @@ public class ClimberSubsystem extends SubsystemBase {
     // Used to check if the climber is currently running
     public boolean isStarted() {
         // Check if the current speed is equal to the running speed
-        return climberMotor.getSpeed() == speed;
+        return climberMotor.getSpeed() != 0;
     }
 }

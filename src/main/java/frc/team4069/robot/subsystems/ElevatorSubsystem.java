@@ -45,7 +45,7 @@ public class ElevatorSubsystem extends SubsystemBase {
 
     // Used to check if the elevator is currently running
     public boolean isStarted() {
-        // Check if the current speed is equal to the running speed
-        return elevatorMotor.getSpeed() == speed;
+        // Check if the current speed is greater than zero
+        return elevatorMotor.getSpeed() != 0;
     }
 }
