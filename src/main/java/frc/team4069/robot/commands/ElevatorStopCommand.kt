@@ -6,7 +6,7 @@ import frc.team4069.robot.Robot
 class ElevatorStopCommand : Command() {
 
     override fun initialize() {
-        requires(Robot.elevator)
+//        requires(Robot.elevator)
 
         Robot.elevator.stop()
     }

@@ -6,8 +6,6 @@ import frc.team4069.robot.Robot
 class FeederStartCommand : Command() {
 
     override fun initialize() {
-        requires(Robot.feeder)
-
         Robot.feeder.start()
     }
 
