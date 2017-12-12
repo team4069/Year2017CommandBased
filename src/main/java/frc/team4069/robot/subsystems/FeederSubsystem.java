@@ -18,7 +18,7 @@ public class FeederSubsystem extends SubsystemBase {
     // Initialize the feeder motor
     private FeederSubsystem() {
         // Initialize the motor with the predefined port number
-        feederMotor = new TalonMotor(IOMapping.FEEDER_PWM);
+        feederMotor = new TalonMotor(IOMapping.FEEDER_PWM, true);
     }
 
     // A public getter for the instance
@@ -33,8 +33,8 @@ public class FeederSubsystem extends SubsystemBase {
 
     // Start running the feeder at full speed
     public void start() {
-        // Set the motor speed to the predefined constant, but negative
-        feederMotor.setConstantSpeed(-speed);
+        // Set the motor speed to the predefined constant
+        feederMotor.setConstantSpeed(speed);
     }
 
     // Stop the feeder

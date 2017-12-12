@@ -17,8 +17,8 @@ public class ClimberSubsystem extends SubsystemBase {
 
     // Initialize the climber motor
     private ClimberSubsystem() {
-        // Initialize the motor with the predefined port number
-        climberMotor = new TalonMotor(IOMapping.CLIMBER_PWM);
+        // Initialize the motor with the predefined port number, and reverse its direction
+        climberMotor = new TalonMotor(IOMapping.CLIMBER_PWM, true);
     }
 
     // A public getter for the instance
@@ -33,8 +33,8 @@ public class ClimberSubsystem extends SubsystemBase {
 
     // Start running the climber at full speed
     public void start() {
-        // Set the motor speed to the predefined constant, but negative
-        climberMotor.setConstantSpeed(-speed);
+        // Set the motor speed to the predefined constant
+        climberMotor.setConstantSpeed(speed);
     }
 
     // Stop the climber

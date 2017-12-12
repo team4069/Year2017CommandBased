@@ -18,7 +18,7 @@ public class ElevatorSubsystem extends SubsystemBase {
     // Initialize the elevator motor
     private ElevatorSubsystem() {
         // Initialize the motor with the predefined port number
-        elevatorMotor = new TalonMotor(IOMapping.ELEVATOR_PWM);
+        elevatorMotor = new TalonMotor(IOMapping.ELEVATOR_PWM, false);
     }
 
     // A public getter for the instance

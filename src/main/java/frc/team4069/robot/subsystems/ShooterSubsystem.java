@@ -18,7 +18,7 @@ public class ShooterSubsystem extends SubsystemBase {
     // Initialize the shooter motor
     private ShooterSubsystem() {
         // Initialize the motor with the predefined port number
-        shooterMotor = new CANTalonMotor(IOMapping.SHOOTER_CAN_BUS);
+        shooterMotor = new CANTalonMotor(IOMapping.SHOOTER_CAN_BUS, false);
     }
 
     // A public getter for the instance

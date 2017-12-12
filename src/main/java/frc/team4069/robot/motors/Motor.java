@@ -10,12 +10,21 @@ abstract class Motor {
     // An instance of the motor state enum
     private MotorState state = MotorState.CONSTANT_SPEED;
 
+    // Flag that says whether or not the motor should be reversed
+    private boolean reversed;
+
     // Beginning and ending speeds for ramping up or down
     private double rampStartSpeed, rampEndSpeed;
     // Time taken to interpolate between the starting and ending speeds
     private long rampTimeMilliseconds;
     // Unix time in milliseconds at which ramping was started
     private long rampStartTimeMilliseconds;
+
+    // Constructor that sets parameters common to all motors
+    Motor(boolean reversed) {
+        // Set the global reversed parameter
+        this.reversed = reversed;
+    }
 
     // Update the motor controls (for states such as ramp up and ramp down)
     public final void update() {
@@ -42,7 +51,7 @@ abstract class Motor {
                 // Add the scaled speed delta to the starting speed to get the interpolated speed
                 double interpolatedSpeed = rampStartSpeed + speedDeltaScaledByTime;
                 // Set the robot's current speed to the ramped speed
-                setSpeedUnsafe(interpolatedSpeed);
+                setSpeedWithReverse(interpolatedSpeed);
         }
     }
 
@@ -60,10 +69,17 @@ abstract class Motor {
             boundedSpeed = -1;
         }
         // Otherwise, set the speed of the motor to the calculated value
-        setSpeedUnsafe(boundedSpeed);
+        setSpeedWithReverse(boundedSpeed);
     }
 
-    // Set the speed of the motor without checking its validity
+    // Set the speed, reversing it if the motor is reversed
+    private void setSpeedWithReverse(double speed) {
+        // If the motor should be reversed, set the speed to its negative
+        double speedWithReverse = reversed ? -speed : speed;
+        setSpeedUnsafe(speedWithReverse);
+    }
+
+    // Set the speed of the motor without any checks or processing
     // Called in the setConstantSpeed function and must be overridden by subclasses
     abstract void setSpeedUnsafe(double speed);
 
@@ -72,6 +88,12 @@ abstract class Motor {
         // Set the speed of the motor to zero
         setConstantSpeed(0);
     }
+
+    // Get the distance traveled so far in meters
+    public abstract double getDistanceTraveledMeters();
+
+    // Reset the distance traveled
+    public abstract void resetDistanceTraveled();
 
     // An enum that contains the possible states of the motor
     private enum MotorState {

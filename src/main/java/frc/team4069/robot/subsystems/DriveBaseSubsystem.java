@@ -13,18 +13,30 @@ public class DriveBaseSubsystem extends SubsystemBase {
     // The horizontal distance from the center of the robot to the outer wheels
     private final double halfRobotWidthMeters = 0.5;
 
+    // The number of meters each wheel travels per encoder tick
+    private final double metersPerTick = 0.0025;
+
     // Left and right drive motors
     private TalonMotor leftDriveMotor;
     private TalonMotor rightDriveMotor;
 
-    // A variable that records the distance traveled since the last state change in meters
-    private double distanceTraveledMeters;
-
     // Initialize the drive motors
     private DriveBaseSubsystem() {
         // Initialize the motors with predefined port numbers
-        leftDriveMotor = new TalonMotor(IOMapping.LEFT_DRIVE_PWM);
-        rightDriveMotor = new TalonMotor(IOMapping.RIGHT_DRIVE_PWM);
+        leftDriveMotor = new TalonMotor(
+                IOMapping.LEFT_DRIVE_PWM,
+                IOMapping.LEFT_DRIVE_ENCODER_1,
+                IOMapping.LEFT_DRIVE_ENCODER_2,
+                true,
+                metersPerTick
+        );
+        rightDriveMotor = new TalonMotor(
+                IOMapping.RIGHT_DRIVE_PWM,
+                IOMapping.RIGHT_DRIVE_ENCODER_1,
+                IOMapping.RIGHT_DRIVE_ENCODER_2,
+                false,
+                metersPerTick
+        );
     }
 
     // A public getter for the instance
@@ -39,7 +51,10 @@ public class DriveBaseSubsystem extends SubsystemBase {
 
     // A public getter for the distance traveled in meters
     public double getDistanceTraveledMeters() {
-        return distanceTraveledMeters;
+        // Get the positions of each of the motors and calculate the average
+        double leftWheelRotationsTraveled = leftDriveMotor.getDistanceTraveledMeters();
+        double rightWheelRotationsTraveled = rightDriveMotor.getDistanceTraveledMeters();
+        return (leftWheelRotationsTraveled + rightWheelRotationsTraveled) / 2;
     }
 
     // A function called periodically and used to send updates to the motors
@@ -47,6 +62,7 @@ public class DriveBaseSubsystem extends SubsystemBase {
         // Update both motors
         leftDriveMotor.update();
         rightDriveMotor.update();
+        System.out.println(getDistanceTraveledMeters());
     }
 
     // Stop moving immediately
@@ -58,8 +74,9 @@ public class DriveBaseSubsystem extends SubsystemBase {
 
     // Start driving with a given inverse turning radius and speed from zero to one
     public void driveContinuousSpeed(double inverseTurningRadiusMeters, double speed) {
-        // Reset the distance counter to zero
-        distanceTraveledMeters = 0;
+        // Reset the distance traveled on both motors to zero
+        leftDriveMotor.resetDistanceTraveled();
+        rightDriveMotor.resetDistanceTraveled();
 
         // Multiply half the width of the robot by the inverse of the turning radius to get
         // a value for the proportion of the overall speed that this wheel must travel at
@@ -77,8 +94,7 @@ public class DriveBaseSubsystem extends SubsystemBase {
         // Continuing the previous example, assuming the overall speed of the robot is scaled to 1,
         // indeed the left wheel should rotate at a speed of 1.5 (1 + 0.5)
         // and the right wheel should rotate at 0.5 (1 - 0.5)
-        // Also, the left wheel's speed needs to be reversed because of its physical orientation
-        double leftWheelSpeed = -(1 + individualWheelSpeedRelativeToAverage) * speed;
+        double leftWheelSpeed = (1 + individualWheelSpeedRelativeToAverage) * speed;
         double rightWheelSpeed = (1 - individualWheelSpeedRelativeToAverage) * speed;
 
         // Set the motor speeds with the previous calculated values
