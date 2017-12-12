@@ -1,6 +1,6 @@
 package frc.team4069.robot.commands;
 
-// An example command for driving straight five meters
+// An example command for driving straight for 3 meters
 public class SimpleDriveCommand extends CommandBase {
 
     // Called to initialize the drive base
@@ -13,7 +13,13 @@ public class SimpleDriveCommand extends CommandBase {
 
     // Called to check whether this command has completed
     protected boolean isFinished() {
-        // The command has finished if and only if the drive base has traveled 5 meters
-        return driveBase.getDistanceTraveledMeters() >= 5;
+        // The command has finished if and only if the drive base has traveled 3 meters
+        return driveBase.getDistanceTraveledMeters() >= 3;
+    }
+
+    // Called when the command is exiting
+    protected void end() {
+        // Stop driving and coast to a halt
+        driveBase.stop();
     }
 }

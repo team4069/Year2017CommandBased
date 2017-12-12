@@ -1,7 +1,7 @@
 package frc.team4069.robot.subsystems;
 
 import frc.team4069.robot.io.IOMapping;
-import frc.team4069.robot.wrappers.Motor;
+import frc.team4069.robot.motors.TalonMotor;
 
 // A relatively simple control subsystem for the elevator
 public class ElevatorSubsystem extends SubsystemBase {
@@ -10,15 +10,15 @@ public class ElevatorSubsystem extends SubsystemBase {
     private static ElevatorSubsystem instance;
 
     // The speed of the elevator when running
-    private final double speed = 0.5;
+    private final double speed = 0.8;
 
     // The single elevator motor
-    private Motor elevatorMotor;
+    private TalonMotor elevatorMotor;
 
     // Initialize the elevator motor
     private ElevatorSubsystem() {
         // Initialize the motor with the predefined port number
-        elevatorMotor = new Motor(IOMapping.ELEVATOR_PWM);
+        elevatorMotor = new TalonMotor(IOMapping.ELEVATOR_PWM, false);
     }
 
     // A public getter for the instance
@@ -34,12 +34,18 @@ public class ElevatorSubsystem extends SubsystemBase {
     // Start running the elevator at full speed
     public void start() {
         // Set the motor speed to the predefined constant
-        elevatorMotor.setSpeed(speed);
+        elevatorMotor.setConstantSpeed(speed);
     }
 
     // Stop the elevator
     public void stop() {
         // Stop the motor immediately
         elevatorMotor.stop();
+    }
+
+    // Used to check if the elevator is currently running
+    public boolean isStarted() {
+        // Check if the current speed is greater than zero
+        return elevatorMotor.getSpeed() != 0;
     }
 }
