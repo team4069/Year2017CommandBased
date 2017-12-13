@@ -114,8 +114,8 @@ public class DriveBaseSubsystem extends SubsystemBase {
         // Use a simple square root function for the polynomial (an exponent of 0.5)
         // This increases the weight of the difference between the wheel speeds at low speeds
         // because the square root is relatively large in magnitude for values close to zero
-        // Multiply the result of the square root by 5 to increase the turning sensitivity
-        return Math.sqrt(speed) * 5;
+        // Multiply the result of the square root by 2 to increase the turning sensitivity
+        return Math.sqrt(speed) * 2;
     }
 
     // A wrapper class that contains a speed value for each of the drive base wheels
