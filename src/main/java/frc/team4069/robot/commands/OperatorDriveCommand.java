@@ -5,10 +5,14 @@ import frc.team4069.robot.io.Input;
 // The main command for operator control of the drive base
 public class OperatorDriveCommand extends CommandBase {
 
-    // Called to initialize the drive base
-    protected void initialize() {
+    // Constructor, used to claim subsystems
+    public OperatorDriveCommand() {
         // Claim exclusive use of the drive base
         requires(driveBase);
+    }
+
+    // Called to initialize the drive base
+    protected void initialize() {
         // It should start out idle
         driveBase.stop();
     }

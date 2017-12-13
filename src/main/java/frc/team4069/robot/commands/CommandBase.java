@@ -11,11 +11,11 @@ import frc.team4069.robot.subsystems.ShooterSubsystem;
 public abstract class CommandBase extends Command {
 
     // Instances of each of the subsystems
-    public static DriveBaseSubsystem driveBase;
-    public static ElevatorSubsystem elevator;
-    public static FeederSubsystem feeder;
-    public static ShooterSubsystem shooter;
-    public static ClimberSubsystem climber;
+    static DriveBaseSubsystem driveBase;
+    static ElevatorSubsystem elevator;
+    static FeederSubsystem feeder;
+    static ShooterSubsystem shooter;
+    static ClimberSubsystem climber;
 
     // An function that handles initialization of subsystems
     public static void init() {
@@ -27,8 +27,8 @@ public abstract class CommandBase extends Command {
         climber = ClimberSubsystem.getInstance();
     }
 
-    // A function called periodically to update all subsystems
-    public static void update() {
+    // A function called periodically to updateSubsystems all subsystems
+    public static void updateSubsystems() {
         // Update each of the subsystems that need updating
         driveBase.update();
     }

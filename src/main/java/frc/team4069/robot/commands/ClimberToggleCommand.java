@@ -3,11 +3,15 @@ package frc.team4069.robot.commands;
 // A command to toggle the climber
 public class ClimberToggleCommand extends CommandBase {
 
+    // Constructor, used to claim subsystems
+    public ClimberToggleCommand() {
+        // Claim the climber subsystem
+        requires(climber);
+    }
+
     // Toggle the climber on initialization
     @Override
     protected void initialize() {
-        // Claim the climber subsystem
-        requires(climber);
         // It should start out idle
         climber.stop();
 
