@@ -48,9 +48,9 @@ public class DriveBaseSubsystem extends SubsystemBase {
 
     // A public getter for the distance traveled in meters
     public double getDistanceTraveledMeters() {
-        // Get the positions of each of the motors and calculate the average
-        double leftWheelRotationsTraveled = leftDriveMotor.getDistanceTraveledMeters();
-        double rightWheelRotationsTraveled = rightDriveMotor.getDistanceTraveledMeters();
+        // Get the absolute values of the positions of each of the motors and calculate the average
+        double leftWheelRotationsTraveled = Math.abs(getDistanceTraveledMeters());
+        double rightWheelRotationsTraveled = Math.abs(rightDriveMotor.getDistanceTraveledMeters());
         return (leftWheelRotationsTraveled + rightWheelRotationsTraveled) / 2;
     }
 
@@ -59,7 +59,6 @@ public class DriveBaseSubsystem extends SubsystemBase {
         // Update both motors
         leftDriveMotor.update();
         rightDriveMotor.update();
-        System.out.println(getDistanceTraveledMeters());
     }
 
     // Stop moving immediately

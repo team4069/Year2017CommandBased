@@ -48,4 +48,12 @@ public class Input {
     public static double getSpeedAxis() {
         return joystick.getRawAxis(IOMapping.DRIVE_SPEED_AXIS);
     }
+
+    // Accessor for the directional pad on the joystick
+    // Returns an angle in degrees, clockwise from the top of the pad
+    // Returns -1 if no input is registered
+    public static int getDirectionalPadAngleDegrees() {
+        // This functionality is built into the joystick library exactly as described
+        return joystick.getPOV(IOMapping.QUICK_TURN_POV);
+    }
 }
