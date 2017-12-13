@@ -37,23 +37,23 @@ public class Robot extends IterativeRobot {
         scheduler.add(new OperatorDriveCommand());
     }
 
-    // A universal update method that is called during both autonomous and operator control
+    // A universal updateSubsystems method that is called during both autonomous and operator control
     private void universalPeriodic() {
         // Update all subsystems
-        CommandBase.update();
+        CommandBase.updateSubsystems();
         // Update the scheduler
         scheduler.run();
     }
 
     // Called often during autonomous mode
     public void autonomousPeriodic() {
-        // Call the universal update method
+        // Call the universal updateSubsystems method
         universalPeriodic();
     }
 
     // Called often during operator control mode
     public void teleopPeriodic() {
-        // Call the universal update method
+        // Call the universal updateSubsystems method
         universalPeriodic();
     }
 }

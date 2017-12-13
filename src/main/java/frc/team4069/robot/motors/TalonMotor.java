@@ -29,7 +29,7 @@ public class TalonMotor extends Motor {
 
     // Create a new instance without dealing with the encoder
     // Instances created using this constructor externally do not have associated encoders
-    // and will cause a crash if any of the encoder-related functions are called
+    // and will do nothing if any of the encoder-related functions are called
     public TalonMotor(int motorPortNumber, boolean reversed) {
         // Call the superclass constructor with the reversed parameter
         super(reversed);
@@ -51,13 +51,17 @@ public class TalonMotor extends Motor {
 
     // Get the distance traveled so far in rotations
     public double getDistanceTraveledMeters() {
-        // Get the distance traveled directly from the Talon
-        return encoder.getDistance();
+        // Get the distance traveled directly from the Talon unless the encoder has not been set
+        // In that case, simply return zero
+        return encoder == null ? 0 : encoder.getDistance();
     }
 
     // Reset the distance traveled
     public void resetDistanceTraveled() {
-        // Reset the encoder count
-        encoder.reset();
+        // If the encoder has been set
+        if (encoder != null) {
+            // Reset the encoder count
+            encoder.reset();
+        }
     }
 }

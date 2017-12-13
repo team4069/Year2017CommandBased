@@ -32,8 +32,8 @@ public class IOMapping {
     // Axis numbers for steering and speed on the drive joystick
     // The steering axis is the horizontal axis of the right stick
     static final int DRIVE_STEERING_AXIS = 4;
-    // The speed axis is the vertical axis of the right stick
-    static final int DRIVE_SPEED_AXIS = 5;
+    // The speed axis is the vertical axis of the left stick
+    static final int DRIVE_SPEED_AXIS = 1;
 
     // Button numbers for elevator control
     // The A button should toggle the elevator

@@ -3,10 +3,15 @@ package frc.team4069.robot.commands;
 // An example command for driving straight for 3 meters
 public class SimpleDriveCommand extends CommandBase {
 
-    // Called to initialize the drive base
-    protected void initialize() {
+
+    // Constructor, used to claim subsystems
+    public SimpleDriveCommand() {
         // Claim exclusive use of the drive base
         requires(driveBase);
+    }
+
+    // Called to initialize the drive base
+    protected void initialize() {
         // Start driving straight at 50% speed
         driveBase.driveContinuousSpeed(0, 0.5);
     }
