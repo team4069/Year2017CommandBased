@@ -8,9 +8,15 @@ public class ShooterStartCommand extends CommandBase {
     // Start running the shooter and feeder when initialized
     @Override
     protected void initialize() {
+        // Claim the shooter and the feeder subsystems
+        requires(shooter);
+        requires(feeder);
+
+        // Start it immediately
         shooter.start();
         // Delay feeder slightly to allow time for shooter to get to full speed
         Timer.delay(1.5);
+        // Start the feeder
         feeder.start();
     }
 

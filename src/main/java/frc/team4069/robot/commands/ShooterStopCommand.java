@@ -6,7 +6,13 @@ public class ShooterStopCommand extends CommandBase {
     // Stop running the shooter and feeder when initialized
     @Override
     protected void initialize() {
+        // Claim the shooter and the feeder subsystems
+        requires(shooter);
+        requires(feeder);
+
+        // Stop it immediately
         shooter.stop();
+        // Stop the feeder
         feeder.stop();
     }
 
