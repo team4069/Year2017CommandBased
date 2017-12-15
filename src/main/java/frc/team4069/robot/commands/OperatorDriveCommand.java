@@ -28,44 +28,48 @@ public class OperatorDriveCommand extends CommandBase {
         double turningCoefficient = Input.getSteeringAxis();
         // Use the negative of the joystick's speed axis as the speed of the drive base
         double speed = -Input.getSpeedAxis();
-        // Set the speed of the robot
-        driveBase.driveContinuousSpeed(turningCoefficient, speed);
 
-        // If the driver is using the regular controls
-        if (turningCoefficient != 0 || speed != 0) {
-            // Disable quick turn
-            quickTurnDistanceMeters = 0;
-        }
+        // If quick turn is not currently being used
+        if (quickTurnDistanceMeters == 0) {
+            // Get output from the directional pad
+            int directionalPadAngle = Input.getDirectionalPadAngleDegrees();
+            // If the directional pad is being used (the output is not -1) and the up direction is not
+            // being pressed (an output of 0)
+            if (directionalPadAngle != -1 && directionalPadAngle != 0) {
+                // If the angle is greater than 180
+                if (directionalPadAngle > 180) {
+                    // Subtract 360 so that the robot rotates in the opposite direction
+                    directionalPadAngle -= 360;
+                }
 
-        // Get output from the directional pad
-        int directionalPadAngle = Input.getDirectionalPadAngleDegrees();
-        // If the directional pad is being used (the output is not -1) and the up direction is not
-        // being pressed (an output of 0)
-        if (directionalPadAngle != -1 && directionalPadAngle != 0) {
-            // If the angle is greater than 180
-            if (directionalPadAngle > 180) {
-                // Subtract 360 so that the robot rotates in the opposite direction
-                directionalPadAngle -= 360;
+                // Multiply the angle in rotations by the horizontal distance between the wheels
+                // wheels in meters multiplied by pi, to get the length of the arc that the wheels should travel
+                quickTurnDistanceMeters = (((double) directionalPadAngle) / 360)
+                        * DriveBaseSubsystem.ROBOT_TRACK_WIDTH_METERS
+                        * Math.PI;
+                // Get the sign of the angle in order to calculate the direction to turn the wheels
+                double turnDirection = Math.signum(quickTurnDistanceMeters);
+                // Start turning at full speed in the direction of the sign
+                driveBase.driveContinuousSpeed(turnDirection, 0);
             }
-
-            // Multiply the angle by the horizontal distance between the robot's wheels in meters
-            // multiplied by pi, to get the length of the arc that the wheels should travel
-            quickTurnDistanceMeters = ((double) directionalPadAngle)
-                    * DriveBaseSubsystem.ROBOT_TRACK_WIDTH_METERS
-                    * Math.PI;
-
-            // Get the sign of the angle in order to calculate the direction to turn the wheels
-            double turnDirection = Math.signum(quickTurnDistanceMeters);
-            // Start turning at full speed in the direction of the sign
-            driveBase.driveContinuousSpeed(turnDirection, 0);
         }
 
-        // If quick turn is currently enabled
-        if (quickTurnDistanceMeters != 0) {
+        // If quick turn is currently running
+        else {
             // If the distance travelled so far is greater than or equal to the quick turn distance
             if (driveBase.getDistanceTraveledMeters() >= quickTurnDistanceMeters) {
                 // Stop turning
                 driveBase.stop();
+                // Disable quick turn
+                quickTurnDistanceMeters = 0;
+            }
+
+            // If the driver is using the regular controls
+            if (Math.abs(turningCoefficient) >= 0.2 || Math.abs(speed) >= 0.2) {
+                // Disable quick turn
+                quickTurnDistanceMeters = 0;
+                // Set the speed of the robot
+                driveBase.driveContinuousSpeed(turningCoefficient, speed);
             }
         }
     }
