@@ -57,20 +57,22 @@ public class OperatorDriveCommand extends CommandBase {
         // If quick turn is currently running
         else {
             // If the distance travelled so far is greater than or equal to the quick turn distance
-            if (driveBase.getDistanceTraveledMeters() >= quickTurnDistanceMeters) {
+            if (driveBase.getDistanceTraveledMeters() >= Math.abs(quickTurnDistanceMeters)) {
                 // Stop turning
                 driveBase.stop();
                 // Disable quick turn
                 quickTurnDistanceMeters = 0;
             }
+        }
 
-            // If the driver is using the regular controls
-            if (Math.abs(turningCoefficient) >= 0.2 || Math.abs(speed) >= 0.2) {
-                // Disable quick turn
-                quickTurnDistanceMeters = 0;
-                // Set the speed of the robot
-                driveBase.driveContinuousSpeed(turningCoefficient, speed);
-            }
+        // If the driver is using the regular controls or if quick turn is disabled
+        if (Math.abs(turningCoefficient) >= 0.2
+                || Math.abs(speed) >= 0.2
+                || quickTurnDistanceMeters == 0) {
+            // Disable quick turn
+            quickTurnDistanceMeters = 0;
+            // Set the speed of the robot
+            driveBase.driveContinuousSpeed(turningCoefficient, speed);
         }
     }
 

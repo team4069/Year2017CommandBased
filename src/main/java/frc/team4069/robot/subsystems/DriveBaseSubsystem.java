@@ -8,7 +8,7 @@ import frc.team4069.robot.motors.TalonMotor;
 public class DriveBaseSubsystem extends SubsystemBase {
 
     // The lateral distance between the robot's wheels in meters
-    public static final double ROBOT_TRACK_WIDTH_METERS = 0.5;
+    public static final double ROBOT_TRACK_WIDTH_METERS = 0.6;
 
     // A singleton instance of the drive base subsystem
     private static DriveBaseSubsystem instance;
