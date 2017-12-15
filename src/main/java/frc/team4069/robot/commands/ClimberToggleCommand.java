@@ -12,9 +12,6 @@ public class ClimberToggleCommand extends CommandBase {
     // Toggle the climber on initialization
     @Override
     protected void initialize() {
-        // It should start out idle
-        climber.stop();
-
         // Check if it is started, and if it is, stop it
         if (climber.isStarted()) {
             climber.stop();
