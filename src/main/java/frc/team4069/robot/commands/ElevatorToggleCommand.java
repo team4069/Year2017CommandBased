@@ -12,9 +12,6 @@ public class ElevatorToggleCommand extends CommandBase {
     // Toggle the elevator on initialization
     @Override
     protected void initialize() {
-        // It should start out idle
-        elevator.stop();
-
         // Check if it is started, and if it is, stop it
         if (elevator.isStarted()) {
             elevator.stop();

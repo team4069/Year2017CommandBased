@@ -15,12 +15,12 @@ public class Robot extends IterativeRobot {
 
     // Called when the robot first starts up
     public void robotInit() {
+        // Initialize all subsystems
+        CommandBase.init();
         // Initialize the joystick input class
         Input.init();
         // Set the instance of the scheduler
         scheduler = Scheduler.getInstance();
-        // Initialize all subsystems
-        CommandBase.init();
     }
 
     // Called at the beginning of autonomous mode

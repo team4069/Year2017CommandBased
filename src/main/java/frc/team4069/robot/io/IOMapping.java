@@ -28,12 +28,14 @@ public class IOMapping {
     // The port number of the drive joystick
     static final int DRIVE_JOYSTICK_NUMBER = 0;
 
-
     // Axis numbers for steering and speed on the drive joystick
     // The steering axis is the horizontal axis of the right stick
     static final int DRIVE_STEERING_AXIS = 4;
     // The speed axis is the vertical axis of the left stick
     static final int DRIVE_SPEED_AXIS = 1;
+
+    // The number of the POV (directional pad) used for quick turning
+    static final int QUICK_TURN_POV = 0;
 
     // Button numbers for elevator control
     // The A button should toggle the elevator

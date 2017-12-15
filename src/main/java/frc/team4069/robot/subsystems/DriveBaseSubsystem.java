@@ -7,6 +7,9 @@ import frc.team4069.robot.motors.TalonMotor;
 // for instructing it to drive and turn in a variety of ways
 public class DriveBaseSubsystem extends SubsystemBase {
 
+    // The lateral distance between the robot's wheels in meters
+    public static final double ROBOT_TRACK_WIDTH_METERS = 0.6;
+
     // A singleton instance of the drive base subsystem
     private static DriveBaseSubsystem instance;
 
@@ -48,9 +51,9 @@ public class DriveBaseSubsystem extends SubsystemBase {
 
     // A public getter for the distance traveled in meters
     public double getDistanceTraveledMeters() {
-        // Get the positions of each of the motors and calculate the average
-        double leftWheelRotationsTraveled = leftDriveMotor.getDistanceTraveledMeters();
-        double rightWheelRotationsTraveled = rightDriveMotor.getDistanceTraveledMeters();
+        // Get the absolute values of the positions of each of the motors and calculate the average
+        double leftWheelRotationsTraveled = Math.abs(leftDriveMotor.getDistanceTraveledMeters());
+        double rightWheelRotationsTraveled = Math.abs(rightDriveMotor.getDistanceTraveledMeters());
         return (leftWheelRotationsTraveled + rightWheelRotationsTraveled) / 2;
     }
 
@@ -59,7 +62,6 @@ public class DriveBaseSubsystem extends SubsystemBase {
         // Update both motors
         leftDriveMotor.update();
         rightDriveMotor.update();
-        System.out.println(getDistanceTraveledMeters());
     }
 
     // Stop moving immediately
