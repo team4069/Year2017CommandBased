@@ -27,7 +27,7 @@ class OperatorDriveCommand extends CommandBase {
         // The turning coefficient should be equal to the steering axis
         double turningCoefficient = Input.getSteeringAxis();
         // Use the negative of the joystick's speed axis as the speed of the drive base
-        double speed = -Input.getSpeedAxis();
+        double speed = Input.getDriveSpeed();
 
         // If quick turn is not currently being used
         if (quickTurnDistanceMeters == 0) {

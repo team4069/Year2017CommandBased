@@ -39,9 +39,13 @@ public class Input {
         return joystick.getRawAxis(IOMapping.DRIVE_STEERING_AXIS);
     }
 
-    // Accessor for the speed axis on the drive joystick
-    public static double getSpeedAxis() {
-        return joystick.getRawAxis(IOMapping.DRIVE_SPEED_AXIS);
+    public static double getDriveSpeed() {
+        // Right button controls forward motion, left button controls backward motion
+        // Therefore we want to negate leftButton's value.
+        double rightButton = joystick.getRawAxis(IOMapping.DRIVE_FORWARD_AXIS);
+        double leftButton = -joystick.getRawAxis(IOMapping.DRIVE_BACKWARD_AXIS);
+
+        return leftButton + rightButton;
     }
 
     // Accessor for the turret direction as an integer from -1 to 1
@@ -50,6 +54,7 @@ public class Input {
         // -1 and 1, with the sign representing the direction the button should make the turret turn
         int leftButtonValue = joystick.getRawButton(IOMapping.TURRET_LEFT_BUTTON) ? -1 : 0;
         int rightButtonValue = joystick.getRawButton(IOMapping.TURRET_RIGHT_BUTTON) ? 1 : 0;
+
         // Add the two values together; the resulting value will be zero if neither or both buttons
         // are pressed, and 1 or -1 if the corresponding button alone is pressed
         return leftButtonValue + rightButtonValue;
