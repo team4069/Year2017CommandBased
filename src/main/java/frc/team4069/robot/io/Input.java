@@ -44,6 +44,17 @@ public class Input {
         return joystick.getRawAxis(IOMapping.DRIVE_SPEED_AXIS);
     }
 
+    // Accessor for the turret direction as an integer from -1 to 1
+    public static int getTurretDirection() {
+        // Get the values of each of the turret buttons and convert them to integers between
+        // -1 and 1, with the sign representing the direction the button should make the turret turn
+        int leftButtonValue = joystick.getRawButton(IOMapping.TURRET_LEFT_BUTTON) ? -1 : 0;
+        int rightButtonValue = joystick.getRawButton(IOMapping.TURRET_RIGHT_BUTTON) ? 1 : 0;
+        // Add the two values together; the resulting value will be zero if neither or both buttons
+        // are pressed, and 1 or -1 if the corresponding button alone is pressed
+        return leftButtonValue + rightButtonValue;
+    }
+
     // Accessor for the directional pad on the joystick
     // Returns an angle in degrees, clockwise from the top of the pad
     // Returns -1 if no input is registered

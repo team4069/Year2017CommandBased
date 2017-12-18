@@ -4,13 +4,13 @@ import frc.team4069.robot.io.Input;
 import frc.team4069.robot.subsystems.DriveBaseSubsystem;
 
 // The main command for operator control of the drive base
-public class OperatorDriveCommand extends CommandBase {
+class OperatorDriveCommand extends CommandBase {
 
     // The distance that the current quick turn should travel (0 means quick turn is not being used)
     private double quickTurnDistanceMeters = 0;
 
     // Constructor, used to claim subsystems
-    public OperatorDriveCommand() {
+    OperatorDriveCommand() {
         // Claim exclusive use of the drive base
         requires(driveBase);
     }
