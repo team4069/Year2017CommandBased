@@ -39,12 +39,12 @@ public class Input {
         return joystick.getRawAxis(IOMapping.DRIVE_STEERING_AXIS);
     }
 
+    // Accessor for the drive speed, using the left and right triggers
     public static double getDriveSpeed() {
-        // Right button controls forward motion, left button controls backward motion
+        // Right trigger controls forward motion, left trigger controls backward motion
         // Therefore we want to negate leftButton's value.
         double rightButton = joystick.getRawAxis(IOMapping.DRIVE_FORWARD_AXIS);
         double leftButton = -joystick.getRawAxis(IOMapping.DRIVE_BACKWARD_AXIS);
-
         return leftButton + rightButton;
     }
 
