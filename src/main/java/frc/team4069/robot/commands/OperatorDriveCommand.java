@@ -4,13 +4,13 @@ import frc.team4069.robot.io.Input;
 import frc.team4069.robot.subsystems.DriveBaseSubsystem;
 
 // The main command for operator control of the drive base
-public class OperatorDriveCommand extends CommandBase {
+class OperatorDriveCommand extends CommandBase {
 
     // The distance that the current quick turn should travel (0 means quick turn is not being used)
     private double quickTurnDistanceMeters = 0;
 
     // Constructor, used to claim subsystems
-    public OperatorDriveCommand() {
+    OperatorDriveCommand() {
         // Claim exclusive use of the drive base
         requires(driveBase);
     }
@@ -27,7 +27,7 @@ public class OperatorDriveCommand extends CommandBase {
         // The turning coefficient should be equal to the steering axis
         double turningCoefficient = Input.getSteeringAxis();
         // Use the negative of the joystick's speed axis as the speed of the drive base
-        double speed = -Input.getSpeedAxis();
+        double speed = Input.getDriveSpeed();
 
         // If quick turn is not currently being used
         if (quickTurnDistanceMeters == 0) {

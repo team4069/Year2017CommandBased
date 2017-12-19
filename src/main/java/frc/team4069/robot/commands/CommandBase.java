@@ -6,6 +6,7 @@ import frc.team4069.robot.subsystems.DriveBaseSubsystem;
 import frc.team4069.robot.subsystems.ElevatorSubsystem;
 import frc.team4069.robot.subsystems.FeederSubsystem;
 import frc.team4069.robot.subsystems.ShooterSubsystem;
+import frc.team4069.robot.subsystems.TurretSubsystem;
 
 // A generic command class that contains references to all of the subsystems and initializes them
 public abstract class CommandBase extends Command {
@@ -16,6 +17,7 @@ public abstract class CommandBase extends Command {
     static FeederSubsystem feeder;
     static ShooterSubsystem shooter;
     static ClimberSubsystem climber;
+    static TurretSubsystem turret;
 
     // An function that handles initialization of subsystems
     public static void init() {
@@ -25,6 +27,7 @@ public abstract class CommandBase extends Command {
         feeder = FeederSubsystem.getInstance();
         shooter = ShooterSubsystem.getInstance();
         climber = ClimberSubsystem.getInstance();
+        turret = TurretSubsystem.getInstance();
     }
 
     // A function called periodically to updateSubsystems all subsystems

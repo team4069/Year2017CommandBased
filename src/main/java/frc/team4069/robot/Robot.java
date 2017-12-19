@@ -3,7 +3,7 @@ package frc.team4069.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.team4069.robot.commands.CommandBase;
-import frc.team4069.robot.commands.OperatorDriveCommand;
+import frc.team4069.robot.commands.OperatorControlCommandGroup;
 import frc.team4069.robot.commands.SimpleDriveCommand;
 import frc.team4069.robot.io.Input;
 
@@ -33,8 +33,8 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
         // Remove all commands from the scheduler so no autonomous tasks continue running
         scheduler.removeAll();
-        // Add an operator control command to the scheduler which should never exit
-        scheduler.add(new OperatorDriveCommand());
+        // Add an operator control command group to the scheduler, which should never exit
+        scheduler.add(new OperatorControlCommandGroup());
     }
 
     // A universal updateSubsystems method that is called during both autonomous and operator control
